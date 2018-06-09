@@ -1,19 +1,10 @@
 package com.springboot.micro.web.config;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.http.converter.xml.MarshallingHttpMessageConverter;
-import org.springframework.oxm.xstream.XStreamMarshaller;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-
-import java.util.List;
 
 @Configuration
 @EnableWebMvc
@@ -54,7 +45,9 @@ public class WebMvcConfiguration implements WebMvcConfigurer{
         }
     }
 
-    @Bean
+
+
+    /*@Bean
     public MappingJackson2HttpMessageConverter jackson2HttpMessageConverter() {
         LOGGER.info(">>>>>> Loading MappingJackson2HttpMessageConverter Configuration <<<<<<");
         MappingJackson2HttpMessageConverter httpMessageConverter = new
@@ -72,15 +65,15 @@ public class WebMvcConfiguration implements WebMvcConfigurer{
         XStreamMarshaller xStreamMarshaller = new XStreamMarshaller();
         httpMessageConverter.setMarshaller(xStreamMarshaller);
         return httpMessageConverter;
-    }
+    }*/
 
-    @Override
+    /*@Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         LOGGER.info(">>>>>> Loading Message Converters Configuration <<<<<<");
         converters.add(jackson2HttpMessageConverter());
         //converters.add(xmlHttpMessageConverter());
         WebMvcConfigurer.super.configureMessageConverters(converters);
-    }
+    }*/
 
     /*@Override
     public void addCorsMappings(CorsRegistry registry) {

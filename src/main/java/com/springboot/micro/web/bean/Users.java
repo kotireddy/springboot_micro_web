@@ -3,22 +3,14 @@ package com.springboot.micro.web.bean;
 import java.io.Serializable;
 import java.util.Set;
 
-
 public class Users implements Serializable {
 
-
     private int id;
-
     private String email;
-
     private String password;
-
     private String name;
-
     private String lastName;
-
     private int active;
-
     private Set<Role> roles;
 
     public Users() {

@@ -1,11 +1,8 @@
 package com.springboot.micro.web.bean;
 
-
-
 public class Role {
 
     private int roleId;
-
     private String role;
 
     public Role() {

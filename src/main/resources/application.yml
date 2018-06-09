@@ -1,10 +1,23 @@
 ## Application related configuration
 spring:
   application:
-    name: spring_boot
+    name: springboot_micro_web
 
 ## Server related configuration
 server:
   port: 8443
   servlet:
-    context-path: /spring_boot       
+    context-path: /springboot_micro_web
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+    lease:
+      duration: 5
+  instance:
+    lease-expiration-duration-in-seconds: 2
+    lease-renewal-interval-in-seconds: 5

@@ -1,36 +1,31 @@
 package com.springboot.micro.web.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.catalina.connector.Connector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class CustomApplicationConfiguration {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(CustomApplicationConfiguration.class);
+	private static final Logger LOGGER = LoggerFactory.
+			getLogger(CustomApplicationConfiguration.class);
 
-
-
-
-	/*@Bean
-	public LocalSessionFactoryBean sessionFactory(){
-		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-		sessionFactory.setDataSource(dataSource());
-		sessionFactory.setPackagesToScan("com.spring.boot.entity");
-		sessionFactory.setHibernateProperties(propertyLoaderConfiguration.hibernateProperties());
-		return sessionFactory;
-	}
-
+	@LoadBalanced
 	@Bean
-	public HibernateTransactionManager transactionManager(){
-		HibernateTransactionManager transactionManager = new HibernateTransactionManager();
-		transactionManager.setSessionFactory(sessionFactory().getObject());
-		return transactionManager;
-	}*/
-
-
-
+	public RestTemplate restTemplate(){
+		RestTemplate restTemplate = new RestTemplate();
+		MappingJackson2HttpMessageConverter httpMessageConverter = new
+										MappingJackson2HttpMessageConverter();
+		httpMessageConverter.setObjectMapper(new ObjectMapper());
+		restTemplate.getMessageConverters().add(httpMessageConverter);
+		return restTemplate;
+	}
 
 	public static Connector getTomcatConnector(){
 		Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
