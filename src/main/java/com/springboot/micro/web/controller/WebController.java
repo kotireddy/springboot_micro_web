@@ -1,5 +1,7 @@
 package com.springboot.micro.web.controller;
 
+import com.springboot.micro.web.bean.CustomUserDetails;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,13 +22,17 @@ public class WebController {
 	
 	@RequestMapping(value="/user")
 	public ModelAndView userPage() {
-		System.out.println("User");
+		CustomUserDetails userDetails = (CustomUserDetails)SecurityContextHolder.getContext()
+							.getAuthentication().getPrincipal();
+		System.out.println(userDetails.getAuthorities());
 		return new ModelAndView("user");
 	}
 	
 	@RequestMapping(value="/admin")
 	public ModelAndView adminPage() {
-		System.out.println("Admin");
+		CustomUserDetails userDetails = (CustomUserDetails)SecurityContextHolder.getContext()
+				.getAuthentication().getPrincipal();
+		System.out.println(userDetails.getAuthorities());
 		return new ModelAndView("admin");
 	}
 	
