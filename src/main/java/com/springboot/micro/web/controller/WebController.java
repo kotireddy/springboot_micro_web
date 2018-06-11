@@ -2,11 +2,11 @@ package com.springboot.micro.web.controller;
 
 import com.springboot.micro.web.bean.CustomUserDetails;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-@RestController
+@Controller
 public class WebController {
 
 	@RequestMapping(value={"/","/home"})

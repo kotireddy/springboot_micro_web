@@ -49,10 +49,10 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
             for (GrantedAuthority authority : authorities) {
                 if (authority.getAuthority().equals("ROLE_USER")) {
                     LOGGER.info("<<<<<<< Redirecting to User Dashboard >>>>>>>");
-                    targetUrl = "user";
+                    targetUrl = "/user";
                 }else if (authority.getAuthority().equals("ROLE_ADMIN")){
                     LOGGER.info("<<<<<<< Redirecting to Admin Dashboard >>>>>>>");
-                    targetUrl = "admin";
+                    targetUrl = "/admin";
                 }
             }
         }
